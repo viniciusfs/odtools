@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='dist/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dist/font-awesome/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='app.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+  <a class="navbar-brand" href="{{ url_for('main.index') }}"><i class="fas fa-shield-alt"></i> ODTools</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('main.index') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('personagens.index') }}">Personagens</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('main.sobre') }}">Sobre</span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+{% block content %}{%endblock %}
+
+<div class="container">
+<hr />
+<h2>O que achou? Comentários!</h2>
+<div class="fb-comments" data-href="http://odtools.ultrav.com.br" data-numposts="15"></div>
+
+<hr />
+      <footer>
+        <p class="text-muted text-center">© 2018 - Vinícius Figueiredo</p>
+      </footer>
+
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='dist/js/bootstrap.min.js') }}"></script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.11&appId=987719908059152';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </body>
+</html>
+

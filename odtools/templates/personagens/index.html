@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Criador de personagens{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="starter-template">
+    <h1>Criador de personagens</h1>
+    <p class="lead">Personagens aleátorios e válidos com apenas um clique</p>
+  </div>
+
+  <p class="text-left">
+  Criar personagens válidos para Old Dragon ficou fácil, com apenas um clique
+  o sistema cria aletoriamente personagem de nível 1 com atributos sorteados com 3d6
+  em ordem. Não gostou dos resultados? Clique até ficar satisfeito, não cobramos nada!
+  Se gostou do que a sorte lhe preparou, clique no botão verde e imprima a ficha de
+  personagem já preenchida!
+  </p>
+
+  <p class="text-center">
+  <a href="/personagens/aleatorio" class="btn btn-primary btn-lg"><i class="fas fa-random"></i> Gerar Personagem</a>
+  </p>
+
+{% if p %}
+<form method="post" action="/personagens/pdf">
+  <div class="card text-center">
+    <div class="card-body">
+      <h3 class="card-title">{{ p.raca['nome'] }}, {{ p.classe['nome'] }}, Nível 1</h3>
+      <h4 class="card-subtitle mb-2 text-muted">
+        FOR <span class="badge badge-secondary">{{ p.atributos['forca']['valor'] }}</span>
+        DES <span class="badge badge-secondary">{{ p.atributos['destreza']['valor'] }}</span>
+        CON <span class="badge badge-secondary">{{ p.atributos['constituicao']['valor'] }}</span>
+        INT <span class="badge badge-secondary">{{ p.atributos['inteligencia']['valor'] }}</span>
+        SAB <span class="badge badge-secondary">{{ p.atributos['sabedoria']['valor'] }}</span>
+        CAR <span class="badge badge-secondary">{{ p.atributos['carisma']['valor'] }}</span>
+      </h4>
+    <hr />
+    <div class="card-text">
+      <div class="row">
+        <div class="col-6">
+          <h5>Armas e proteção</h5>
+          <ul class="text-left">
+          {% for item in p['armas'] %}
+            <li>{{ item['nome'] }}</li>
+          {% endfor %}
+          {% for item in p['protecao'] %}
+            <li>{{ item['nome'] }}</li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="col-6">
+          <h5>Equipamentos</h5>
+          <ul class="text-left">
+          {% for item in p['equipamentos'] %}
+            <li>{{ item['nome'] }}</li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+      <input type="hidden" name="personagem" value="{{ p | safe }}" />
+      <button type="submit" class="btn btn-success text-center"><i class="fas fa-print"></i> Imprimir Ficha</button>
+    </div>
+  </div>
+</form>
+{% endif %}
+
+
+</div>
+{% endblock %}

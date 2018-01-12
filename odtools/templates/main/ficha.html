@@ -1,0 +1,514 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    </head>
+    <body>
+        <style>
+            h3 {
+                margin: 0;
+            }
+        </style>
+        <div class="mt-3"></div>
+        <div class="container">
+            <div class="form-row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/logo_od.png')}}" alt="Logo Old Dragon">
+                </div>
+                <div class="col-md-4">
+                    <label for="personagem">Personagem</label>
+                    <input class="form-control" type="text" name="personagem" id="personagem" >
+                </div>
+                <div class="col-md-4">
+                    <label for="jogador">Jogador</label>
+                    <input class="form-control" type="text" name="jogador" id="jogador">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <label for="classe">Classe</label>
+                    <input readonly
+                    class="form-control" type="text" name="classe"
+                                                               id="classe"
+                                                               value="{{
+                                                               data['classe']['nome']
+                                                               }}">
+                </div>
+                <div class="col-md-2">
+                    <label for="especializacao">Especialização</label>
+                    <input readonly class="form-control" type="text" name="especializacao" id="especializacao">
+                </div>
+                <div class="col-md-1">
+                    <label for="nivel">Nível</label>
+		    <input readonly class="form-control" type="text" name="nivel" id="nivel" value="1">
+                </div>
+                <div class="col-md-3">
+                    <label for="raca">Raça</label>
+                    <input readonly class="form-control" type="text" name="raca" id="raca"
+                                                               value="{{
+                                                               data['raca']['nome']
+                                                               }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="alinhamento">Alinhamento</label>
+                    <input readonly class="form-control" type="text" name="alinhamento" id="alinhamento"
+                                                               value="{{
+                                                               data['alinhamento']
+                                                               }}">
+                </div>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <div class="col-lg-6">
+                    <h2 class="text-center">Atributos</h2>
+                    <hr>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{ url_for('static',filename='images/for.png') }}" alt="Força">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>FOR</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" readonly type="text" name="forca" id="forca"
+                                                               value="{{
+                                                               data['atributos']['forca']['valor']
+                                                               }}">
+                            <small>Força</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" readonly type="text" name="ajuste_forca" id="ajuste_forca"
+                                                               value="{{
+                                                               data['atributos']['forca']['ajuste']
+                                                               }}">
+                            <small>Ajuste</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{
+                            url_for('static',filename='images/des.png') }}"
+                            alt="Destreza">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>DES</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="destreza" id="destreza" readonly
+                                                               value="{{
+                                                               data['atributos']['destreza']['valor']
+                                                               }}">
+                            <small>Destreza</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ajuste_destreza" id="ajuste_destreza" readonly
+                                                               value="{{
+                                                               data['atributos']['destreza']['ajuste']
+                                                               }}">
+                            <small>Ajuste</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{
+                            url_for('static',filename='images/cons.png') }}"
+                            alt="Constituição">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>CON</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="constituicao" id="constituicao" readonly
+                                                               value="{{
+                                                               data['atributos']['constituicao']['valor']
+                                                               }}">
+                            <small>Constituição</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ajuste_constituicao" id="ajuste_constituicao" readonly
+                                                               value="{{
+                                                               data['atributos']['constituicao']['ajuste']
+                                                               }}">
+                            <small>Ajuste</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{
+                            url_for('static',filename='images/int.png') }}"
+                            alt="Inteligência">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>INT</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="inteligencia" id="inteligencia" readonly
+                                                               value="{{
+                                                               data['atributos']['inteligencia']['valor']
+                                                               }}">
+                            <small>Inteligência</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="idiomas_adicionais" id="idiomas_adicionais" readonly
+                                                               value="{{
+                                                               data['atributos']['inteligencia']['idiomas_adicionais']
+                                                               }}">
+                            <small>Idiomas</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="aprender_magia" id="aprender_magia" readonly
+                                                               value="{{
+                                                               data['atributos']['inteligencia']['chance_aprender']
+                                                               }}">
+                            <small>%AP. Magia</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{
+                            url_for('static',filename='images/sab.png') }}"
+                            alt="Sabedoria">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>SAB</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="sabedoria" id="sabedoria" readonly
+                                                               value="{{
+                                                               data['atributos']['sabedoria']['valor']
+                                                               }}">
+                            <small>Sabedoria</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ajuste_sabedoria" id="ajuste_sabedoria" readonly
+                                                               value="{{
+                                                               data['atributos']['sabedoria']['ajuste']
+                                                               }}">
+                            <small>Ajuste</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{
+                            url_for('static',filename='images/car.png') }}"
+                            alt="Carisma">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>CAR</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="carisma" id="carisma" readonly
+                                                               value="{{
+                                                               data['atributos']['carisma']['valor']
+                                                               }}">
+                            <small>Carisma</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="seguidores" id="seguidores" readonly
+                                                               value="{{
+                                                               data['atributos']['carisma']['seguidores']
+                                                               }}">
+                            <small>Seguidores</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ajuste_reacao" id="ajuste_reacao" readonly
+                                                               value="{{
+                                                               data['atributos']['carisma']['ajuste']
+                                                               }}">
+                            <small>AJ. Reação</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <h2 class="text-center">Subatributos</h2>
+                    <hr>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{ url_for('static',
+                            filename='images/pv.png') }}" alt="Pontos de Vida">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>PV</h3>
+                            <small class="text-muted">Pontos de Vida</small>
+                        </div>
+                        <div class="col-sm-2">
+				<input class="form-control form-control-lg" type="text" name="pv_total" id="pv_total" readonly value="{{
+				data['atributos']['constituicao']['ajuste'] + data['classe']['dado_vida'] }}">
+                            <small>Total</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="pv_dados" id="pv_dados" readonly
+                                                               value="{{
+                                                               data['classe']['dado_vida']
+                                                               }}">
+                            <small>DV</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="pv_con" id="pv_con" readonly
+                                                               value="{{
+                                                               data['atributos']['constituicao']['ajuste']
+                                                               }}">
+                            <small>CON</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="pv_ressureicao" id="pv_ressureicao" readonly
+                                                               value="{{
+                                                               data['atributos']['constituicao']['chance_ressurreicao']
+                                                               }}">
+                            <small>% Ressu</small>
+                        </div>
+                    </div>
+
+                    <div class="mt-3"></div>
+                    <div class="mb-3"></div>
+
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{ url_for('static',
+                            filename='images/ca.png') }}" alt="Classe de Armadura">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>CA</h3>
+                            <small class="text-muted">Classe de Armadura</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ca_total" id="ca_total" readonly
+                                                               value="{{
+                                                               data['ca']['total']
+                                                               }}">
+                            <small>Total</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ca_armadura" id="ca_armadura" readonly
+                                                               value="{{
+                                                               data['ca']['equipamentos']
+                                                               }}">
+                            <small>Equipamento</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ca_escudo" id="ca_escudo" readonly
+                                                               value="{{
+                                                               data['atributos']['destreza']['ajuste']
+                                                               }}">
+                            <small>Destreza</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="ca_racaitem" id="ca_racaitem" readonly
+                                                               value="{{
+                                                               data['ca']['raca']
+                                                               }}">
+                            <small>Raça</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{ url_for('static',
+                            filename='images/jp.png') }}" alt="Jogada de Proteção">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>JP</h3>
+                            <small class="text-muted">Jogada de Proteção</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="jp_base" id="jp_base" readonly
+                                                               value="{{
+                                                               data['jp']['base']
+                                                               }}">
+                            <small>Base</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="jp_des" id="jp_des" readonly
+                                                               value="{{
+                                                               data['jp']['destreza']
+                                                               }}">
+                            <small>DES</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="jp_con" id="jp_con" readonly
+                                                               value="{{
+                                                               data['jp']['constituicao']
+                                                               }}">
+                            <small>CON</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="jp_sab" id="jp_sab" readonly
+                                                               value="{{
+                                                               data['jp']['sabedoria']
+                                                               }}">
+                            <small>SAB</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{ url_for('static',
+                            filename='images/mov.png') }}" alt="Movimento">
+                        </div>
+                        <div class="col-sm-2">
+                            <h3>MOV</h3>
+                            <small class="text-muted">Movimento</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="mv_total" id="mv_total" readonly
+                                                               value="{{
+                                                               data['movimento']['total']
+                                                               }}">
+                            <small>Total</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="mv_raca" id="mv_raca" readonly
+                                                               value="{{
+                                                               data['movimento']['raca']
+                                                               }}">
+                            <small>Raça</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="mv_carga" id="mv_carga" readonly
+                                                               value="{{
+                                                               data['movimento']['carga']
+                                                               }}">
+                            <small>Carga</small>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="mv_armadura" id="mv_armadura" readonly
+                                                               value="{{
+                                                               data['movimento']['armadura']
+                                                               }}">
+                            <small>Armadura</small>
+                        </div>
+                    </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-2">
+                                <img style="width:70px;" src="{{ url_for('static',
+                                filename='images/atq_curto.png') }}" alt="Ataque corpo a corpo">
+                            </div>
+                            <div class="col-sm-2">
+                                <h3>BA</h3>
+                                <small class="text-muted">Bonus de Ataque</small>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" name="atq_cac_ba" id="atq_cac_ba" readonly
+                                                                   value="{{
+                                                                   data['ba']['forca']
+                                                                   }}">
+                                <small>Força</small>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" name="atq_cac_forca" id="atq_cac_forca" readonly
+                                                                   value="{{
+                                                                   data['ba']['destreza']
+                                                                   }}">
+                                <small>Destreza</small>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" name="atq_cac_item" id="atq_cac_item" readonly
+                                                                   value="{{
+                                                                   data['ba']['classe']
+                                                                   }}">
+                                <small>Classe</small>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" name="atq_cac_misc" id="atq_cac_misc" readonly
+                                                                   value="{{
+                                                                   data['ba']['raca']
+                                                                   }}">
+                                <small>Raça</small>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="text-center">Ataques</h3>
+		    <hr>
+                    <table class="table table-bordered table-responsive-lg">
+                        <thead>
+                            <tr>
+                                <th>Arma</th>
+				<th><acronym title="bônus de ataque (corpo-a-corpo/distância)">BA</acronym></th>
+                                <th>Iniciativa</th>
+                                <th>Dano</th>
+                                <th>Alcance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+		            {% for arma in data['equipamentos'] %}
+			    {% if arma['tipo'] == 'arma' %}
+                            <tr>
+				    <td>{{ arma['nome'] }}</td>
+				    <td>{{ arma['ba_cac'] | default('-') }} / {{ arma['ba_dis'] | default('-') }}</td>
+				    <td>{{ arma['iniciativa'] }}</td>
+				    <td>{{ arma['dano'] }}</td>
+				    <td>{{ arma['alcance'] | default('-') }}</td>
+                            </tr>
+			    {% endif %}
+			    {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="form-row">
+                        <div class="col-sm-2">
+                            <img style="width:70px;" src="{{ url_for('static',
+                            filename='images/pv.png') }}" alt="Pontos de Vida">
+                        </div>
+                        <div class="col-sm-3">
+                            <h3>Idiomas</h3>
+                        </div>
+                        <div class="col-sm-7">
+		            <ul class="list-inline">
+		            {% for idioma in data['idiomas'] %}
+		            <li class="list-inline-item">{{ idioma }}</li>
+		            {% endfor %}
+		            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="text-center">Equipamentos</h3>
+		    <hr>
+                    <table class="table table-bordered table-responsive-lg">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+				<th>Peso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+		            {% for item in data['equipamentos'] %}
+                            <tr>
+				    <td>{{ item['nome'] }}</td>
+				    <td>{{ item['peso'] }} kg</td>
+                            </tr>
+			    {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="text-center">Pontos de experiência</h3>
+                    <hr>
+                    <input class="form-control" type="text" name="xp_atual" id="xp_atual">
+                    <small>Nível Atual</small>
+                    <input class="form-control" type="text" name="xp_proximo" id="xp_proximo">
+                    <small>Próximo Nível</small>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5"></div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="tinymce/tinymce.min.js"></script>
+		<script>
+		tinymce.init({
+			selector:'textarea',
+			language: 'pt_BR'
+		});
+		</script>
+    </body>
+</html>
