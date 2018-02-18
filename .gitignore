@@ -1,0 +1,7 @@
+*.pyc
+*.zip
+*~
+*.swp
+*.tar.gz
+*.pdf
+log/*
