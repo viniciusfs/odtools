@@ -5,7 +5,7 @@
 
 classes = [
     {
-        "nome": u"Clérigo",
+        "nome": "Clérigo",
         "dado_vida": 8,
         "atributos_minimos": {
             "sabedoria": 14
@@ -103,7 +103,7 @@ classes = [
         }
     },
     {
-        "nome": u"Homem de armas",
+        "nome": "Homem de armas",
         "dado_vida": 10,
         "atributos_minimos": {
             "forca": 12,
@@ -148,7 +148,7 @@ classes = [
         }
     },
     {
-        "nome": u"Mago",
+        "nome": "Mago",
         "dado_vida": 4,
         "atributos_minimos": {
             "inteligencia": 14
@@ -217,7 +217,7 @@ classes = [
         }
     },
     {
-        "nome": u"Ladrão",
+        "nome": "Ladrão",
         "dado_vida": 6,
         "atributos_minimos": {
             "destreza": 12

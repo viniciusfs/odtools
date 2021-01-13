@@ -53,10 +53,8 @@ def configure_extensions(app):
 def configure_logging(app):
     log_file = os.path.join(app.config['LOG_DIR'], 'application.log')
 
-    app_log_handler = FileHandler(log_file)
+    app_log_handler = FileHandler(log_file, encoding= "UTF-8")
     app_log_handler.setLevel(logging.DEBUG)
-    app_log_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
-    )
+    app_log_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
 
     app.logger.addHandler(app_log_handler)

@@ -5,7 +5,7 @@
 # (c) 2017, Vinicius Figueiredo <viniciusfs@gmail.com>
 
 from flask import current_app
-from flask.ext.script import Manager, Server, Shell
+from flask_script import Manager, Server, Shell
 
 from odtools.app import create_app
 
